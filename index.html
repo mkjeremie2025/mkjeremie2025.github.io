@@ -3,94 +3,423 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MK Jérémie</title>
+
+  <title>MK Jérémie | Créateur de contenu</title>
+
+  <meta name="description" content="MK Jérémie — Créateur de contenu, comédien et musicien. Découvrez mes vidéos, ma musique et mes projets.">
 
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
       font-family: Arial, sans-serif;
-      background: #101020;
+      background: #0b0b0b;
       color: white;
-      text-align: center;
-    }
-
-    header {
-      padding: 25px;
-      background: #191933;
-      color: #ffd700;
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    main {
-      padding: 60px 20px;
-    }
-
-    h1 {
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      color: #ccccdd;
-      font-size: 18px;
       line-height: 1.6;
     }
 
-    .bouton {
-      display: block;
-      max-width: 250px;
-      margin: 15px auto;
-      padding: 15px;
-      background: #ffd700;
-      color: #101020;
-      text-decoration: none;
-      border-radius: 10px;
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.95);
+      border-bottom: 1px solid #333;
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
       font-weight: bold;
     }
 
-    footer {
-      padding: 20px;
+    .logo span {
+      color: #00e5ff;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 18px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #00e5ff;
+    }
+
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      background:
+        radial-gradient(circle at top, #17202a, #0b0b0b 60%);
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 10vw, 80px);
+      margin-bottom: 10px;
+    }
+
+    .hero h1 span {
+      color: #00e5ff;
+    }
+
+    .hero h2 {
+      font-size: clamp(20px, 5vw, 32px);
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: #ccc;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 22px;
+      margin: 6px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      background: #00e5ff;
+      color: #000;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      opacity: 0.85;
+    }
+
+    .btn.dark {
+      background: transparent;
+      border: 1px solid #00e5ff;
+      color: white;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 34px;
+      margin-bottom: 40px;
+    }
+
+    .section-title span {
+      color: #00e5ff;
+    }
+
+    .about {
+      text-align: center;
+      max-width: 800px;
+      margin: auto;
+      color: #ccc;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #151515;
+      padding: 30px 20px;
+      border-radius: 18px;
+      border: 1px solid #292929;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: #00e5ff;
+    }
+
+    .card .icon {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
       color: #aaa;
+      font-size: 15px;
+    }
+
+    .contact {
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid #222;
+      color: #888;
+    }
+
+    .social {
+      margin-top: 25px;
+    }
+
+    .social a {
+      display: inline-block;
+      margin: 5px;
+      padding: 10px 16px;
+      border: 1px solid #333;
+      border-radius: 20px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .social a:hover {
+      border-color: #00e5ff;
+      color: #00e5ff;
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav a {
+        margin: 0 6px;
+      }
+
+      .hero {
+        min-height: 80vh;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <header>MK JÉRÉMIE 🤟</header>
+  <!-- NAVIGATION -->
+  <header>
+    <nav>
+      <div class="logo">MK <span>JÉRÉMIE</span></div>
 
-  <main>
-    <h1>Bienvenue chez MK Jérémie</h1>
+      <div>
+        <a href="#accueil">Accueil</a>
+        <a href="#apropos">À propos</a>
+        <a href="#projets">Projets</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-    <p>
-      Créateur de contenu • Comédien • Musique
-    </p>
 
-    <p>
-      Bienvenue dans mon univers !
-      Découvrez mes vidéos, mes créations musicales
-      et mes différents projets.
-    </p>
+  <!-- ACCUEIL -->
+  <section class="hero" id="accueil">
+    <div>
+      <h1>MK <span>JÉRÉMIE</span></h1>
 
-    <a class="bouton"
-       href="https://www.tiktok.com/@m.k.jeremie">
-       🎬 Mon TikTok
-    </a>
+      <h2>Créateur de contenu • Comédien • Musique</h2>
 
-    <a class="bouton"
-       href="https://www.youtube.com/">
-       ▶️ Ma chaîne YouTube
-    </a>
+      <p>
+        Bienvenue dans mon univers !
+        Découvrez mes vidéos, mes créations musicales,
+        mes projets et mon parcours.
+      </p>
 
-    <a class="bouton"
-       href="https://wa.me/">
-       📱 Me contacter sur WhatsApp
-    </a>
-  </main>
+      <div class="buttons">
+        <a class="btn" href="#projets">Découvrir mes projets</a>
+        <a class="btn dark" href="#contact">Me contacter</a>
+      </div>
+    </div>
+  </section>
 
+
+  <!-- À PROPOS -->
+  <section id="apropos">
+    <h2 class="section-title">À <span>propos</span></h2>
+
+    <div class="about">
+      <p>
+        Je suis <strong>MK Jérémie</strong>, créateur de contenu,
+        comédien et passionné par la musique.
+        Je crée des contenus pour divertir, inspirer et partager
+        ma créativité avec le public.
+      </p>
+
+      <p style="margin-top: 15px;">
+        Mon objectif est de continuer à apprendre,
+        créer et construire une communauté autour de mes projets.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- PROJETS -->
+  <section id="projets">
+    <h2 class="section-title">Mes <span>projets</span></h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="icon">🎬</div>
+        <h3>Création de contenu</h3>
+        <p>
+          Vidéos, divertissement, motivation et contenus
+          pour les réseaux sociaux.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🎭</div>
+        <h3>Comédie</h3>
+        <p>
+          Des sketchs et des contenus humoristiques
+          pour faire sourire et divertir.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🎵</div>
+        <h3>Musique</h3>
+        <p>
+          Création de chansons et projets musicaux
+          autour de différents styles.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🎧</div>
+        <h3>Montage de son</h3>
+        <p>
+          Création et personnalisation de sons
+          pour différents événements et projets.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- RÉSEAUX -->
+  <section>
+    <h2 class="section-title">Mes <span>réseaux</span></h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="icon">🎵</div>
+        <h3>TikTok</h3>
+        <p>Retrouve mes vidéos et mes nouveaux contenus.</p>
+
+        <a
+          class="btn"
+          href="https://www.tiktok.com/@m.k.jeremie"
+          target="_blank">
+          Voir TikTok
+        </a>
+      </div>
+
+
+      <div class="card">
+        <div class="icon">▶️</div>
+        <h3>YouTube</h3>
+        <p>Découvre mes vidéos et mes projets musicaux.</p>
+
+        <!-- REMPLACE CE LIEN PAR TON VRAI LIEN YOUTUBE -->
+        <a
+          class="btn"
+          href="https://www.youtube.com/"
+          target="_blank">
+          Voir YouTube
+        </a>
+      </div>
+
+
+      <div class="card">
+        <div class="icon">💬</div>
+        <h3>WhatsApp</h3>
+        <p>Pour les collaborations et les demandes.</p>
+
+        <!-- REMPLACE LE NUMÉRO PAR TON NUMÉRO -->
+        <a
+          class="btn"
+          href="https://wa.me/237XXXXXXXXX"
+          target="_blank">
+          WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Me <span>contacter</span></h2>
+
+    <div class="contact">
+      <p>
+        Tu veux collaborer avec MK Jérémie,
+        commander une création musicale ou proposer un projet ?
+      </p>
+
+      <div class="buttons">
+        <a
+          class="btn"
+          href="https://wa.me/237XXXXXXXXX"
+          target="_blank">
+          💬 Écrire sur WhatsApp
+        </a>
+
+        <a
+          class="btn dark"
+          href="https://www.tiktok.com/@m.k.jeremie"
+          target="_blank">
+          🎵 TikTok
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
   <footer>
-    © 2026 MK Jérémie — Tous droits réservés
+    <p>
+      © 2026 MK Jérémie — Tous droits réservés.
+    </p>
+
+    <div class="social">
+      <a href="#accueil">Accueil</a>
+      <a href="#apropos">À propos</a>
+      <a href="#projets">Projets</a>
+      <a href="#contact">Contact</a>
+    </div>
   </footer>
 
 </body>
